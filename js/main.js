@@ -3,15 +3,16 @@ Vue.config.devtools = true;
 var app = new Vue({
     el: '#app',
     data: {
-        email: [],
+        emails: [],
     },
     mounted() {
-        axios
-            .get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(randommail => {
-                for(let i = 0; i < 10; i++) {
-                    this.email.push(randommail.data.response)
-                }
-            })
+       
+        for(let i = 0; i < 10; i++) {
+            axios
+                .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then(randommail => {
+                    this.emails.push(randommail.data.response) 
+                })
+        }
     }
-})
+});
